@@ -2950,45 +2950,6 @@ ${members > 1 ? `${members - reads.length - deliveries.length} tersisa` : ""}
           return reply("the message you replied does not contain a reply!");
         await qse.quoted.copyNForward(m.chat, true);
         break;
-      case "kick":
-        if (!isGroup) return reply(mess.only.group);
-        if (!isGroupAdmins && !mek.key.fromMe) return reply(mess.only.admin);
-        if (!isBotGroupAdmins) return reply("Bot not admin");
-        if (
-          mek.message.extendedTextMessage === undefined ||
-          mek.message.extendedTextMessage === null
-        )
-          return reply("Tag target yang ingin di kick!");
-        mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid;
-        if (mentioned.length > 1) {
-          itsmevall.groupRemove(from, mentioned);
-          reply(mess.success);
-        } else if (mentioned.length < 1) {
-          anu = mek.message.extendedTextMessage.contextInfo.participant;
-          itsmevall.groupRemove(from, [anu]);
-          reply(mess.success);
-        } else {
-          itsmevall.groupRemove(from, mentioned);
-          reply(mess.success);
-        }
-        break;
-      case "add":
-        if (!isGroup) return reply(mess.only.group);
-        if (!isGroupAdmins && !mek.key.fromMe) return reply(mess.only.admin);
-        if (!isBotGroupAdmins) return reply("Bot not admin");
-        mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid;
-        if (mentioned.length > 1) {
-          add(from, mentioned);
-          reply(mess.success);
-        } else if (mentioned.length < 1) {
-          anu = mek.message.extendedTextMessage.contextInfo.participant;
-          itsmevall.groupAdd(from, [anu]);
-          reply(mess.success);
-        } else {
-          add(from, mentioned);
-          reply(mess.success);
-        }
-        break;
 case 'igstory': 
             if(!q) return reply('Usernamenya?')
             hx.igstory(q)

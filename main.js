@@ -400,7 +400,7 @@ if (anu.action == 'add' && !mem.includes(client.user.jid)) {
     isBattre = batterylevel + "%";
     isCharge = json[2][0][1].live;
   });
-antical = true
+antical = false
 client.on("CB:Call", json => {
 if (antical === false) return
 let call;
